@@ -2,6 +2,7 @@ package uniandes.edu.co.SuperAndesNoSQL.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 
@@ -9,11 +10,23 @@ import java.util.Date;
 public class Producto {
     @Id
     private String id;
+    
+    @Field("nombre")
     private String nombre;
+
+    @Field("precio_unitario")
     private double precioUnitario;
+
+    @Field("presentacion")
     private String presentacion;
+    
+    @Field("categoria_id")
     private String categoriaId;
+    
+    @Field("codigo_barras")
     private String codigoBarras;
+    
+    @Field("fecha_expiracion")
     private Date fechaExpiracion;
 
     // Constructor

@@ -2,15 +2,26 @@ package uniandes.edu.co.SuperAndesNoSQL.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "proveedores")
 public class Proveedor {
     @Id
     private String id;
+
+    @Field("nit")
     private String nit;
+
+    @Field("nombre")
     private String nombre;
+
+    @Field("direccion")
     private String direccion;
+
+    @Field("nombre_contacto")
     private String nombreContacto;
+
+    @Field("telefono_contacto")
     private String telefonoContacto;
 
     // Getters y Setters

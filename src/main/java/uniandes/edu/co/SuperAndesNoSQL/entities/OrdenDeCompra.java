@@ -2,23 +2,54 @@ package uniandes.edu.co.SuperAndesNoSQL.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.util.Date;
 import java.util.List;
 
 @Document(collection = "ordenes_compra")
 public class OrdenDeCompra {
+
     @Id
     private String id;
-    private Date fechaCreacion;
-    private String sucursalId; // Relación con la sucursal
-    private String proveedorId; // Relación con el proveedor
-    private String estado; // "Vigente", "Entregada", "Anulada"
-    private List<DetalleOrden> detalle; // Detalle de los productos en la orden
 
-    public static class DetalleOrden {
-        private String productoId; // Relación con el producto
+    @Field("fecha_creacion")
+    private Date fechaCreacion;
+
+    @Field("fecha_entrega_esperada")
+    private Date fechaEntregaEsperada;
+
+    @Field("estado")
+    private String estado;
+
+    @Field("sucursal_id")
+    private String sucursalId;
+
+    @Field("proveedor_id")
+    private String proveedorId;
+
+    @Field("detalles")
+    private List<DetalleProducto> detalles;
+
+    public static class DetalleProducto {
+        @Field("producto_id")
+        private String productoId;
+
+        @Field("cantidad")
         private int cantidad;
-        private double precio;
+
+        @Field("precio_unitario")
+        private double precioUnitario;
+
+        // Constructor vacío
+        public DetalleProducto() {}
+
+        // Constructor completo
+        public DetalleProducto(String productoId, int cantidad, double precioUnitario) {
+            this.productoId = productoId;
+            this.cantidad = cantidad;
+            this.precioUnitario = precioUnitario;
+        }
 
         // Getters y Setters
         public String getProductoId() {
@@ -37,25 +68,27 @@ public class OrdenDeCompra {
             this.cantidad = cantidad;
         }
 
-        public double getPrecio() {
-            return precio;
+        public double getPrecioUnitario() {
+            return precioUnitario;
         }
 
-        public void setPrecio(double precio) {
-            this.precio = precio;
+        public void setPrecioUnitario(double precioUnitario) {
+            this.precioUnitario = precioUnitario;
         }
+    }
 
-        // Constructor
-        public DetalleOrden(String productoId, int cantidad, double precio) {
-            this.productoId = productoId;
-            this.cantidad = cantidad;
-            this.precio = precio;
-        }
+    // Constructor vacío
+    public OrdenDeCompra() {}
 
-        // Constructor vacio
-        public DetalleOrden() {
-
-        }
+    // Constructor completo
+    public OrdenDeCompra(String id, Date fechaCreacion, Date fechaEntregaEsperada, String estado, String sucursalId, String proveedorId, List<DetalleProducto> detalles) {
+        this.id = id;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaEntregaEsperada = fechaEntregaEsperada;
+        this.estado = estado;
+        this.sucursalId = sucursalId;
+        this.proveedorId = proveedorId;
+        this.detalles = detalles;
     }
 
     // Getters y Setters
@@ -75,6 +108,22 @@ public class OrdenDeCompra {
         this.fechaCreacion = fechaCreacion;
     }
 
+    public Date getFechaEntregaEsperada() {
+        return fechaEntregaEsperada;
+    }
+
+    public void setFechaEntregaEsperada(Date fechaEntregaEsperada) {
+        this.fechaEntregaEsperada = fechaEntregaEsperada;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public String getSucursalId() {
         return sucursalId;
     }
@@ -91,36 +140,11 @@ public class OrdenDeCompra {
         this.proveedorId = proveedorId;
     }
 
-    public String getEstado() {
-        return estado;
+    public List<DetalleProducto> getDetalles() {
+        return detalles;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setDetalles(List<DetalleProducto> detalles) {
+        this.detalles = detalles;
     }
-
-    public List<DetalleOrden> getDetalle() {
-        return detalle;
-    }
-
-    public void setDetalle(List<DetalleOrden> detalle) {
-        this.detalle = detalle;
-    }
-
-    // Constructor
-    public OrdenDeCompra(String id, Date fechaCreacion, String sucursalId, String proveedorId, String estado,
-            List<DetalleOrden> detalle) {
-        this.id = id;
-        this.fechaCreacion = fechaCreacion;
-        this.sucursalId = sucursalId;
-        this.proveedorId = proveedorId;
-        this.estado = estado;
-        this.detalle = detalle;
-    }
-
-    // Constructor vacio
-    public OrdenDeCompra() {
-
-    }
-
 }

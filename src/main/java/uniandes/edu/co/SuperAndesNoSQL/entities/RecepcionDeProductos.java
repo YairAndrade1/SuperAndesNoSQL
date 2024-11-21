@@ -2,6 +2,8 @@ package uniandes.edu.co.SuperAndesNoSQL.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.util.Date;
 import java.util.List;
 
@@ -9,13 +11,25 @@ import java.util.List;
 public class RecepcionDeProductos {
     @Id
     private String id;
-    private String ordenCompraId; // Relación con la orden de compra
+
+    @Field("orden_compra_id")
+    private String ordenCompraId; 
+
+    @Field("fecha_recepcion")
     private Date fechaRecepcion;
-    private List<DetalleRecepcion> productos; // Detalle de productos recibidos
+
+    @Field("productos")
+    private List<DetalleRecepcion> productos; 
 
     public static class DetalleRecepcion {
-        private String productoId; // Relación con el producto
+        
+        @Field("producto_id")
+        private String productoId; 
+
+        @Field("cantidad")
         private int cantidad;
+
+        @Field("nuevo_costo_promedio")
         private double nuevoCostoPromedio;
 
         // Getters y Setters

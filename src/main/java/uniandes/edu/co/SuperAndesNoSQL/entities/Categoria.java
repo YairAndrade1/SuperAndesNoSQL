@@ -2,13 +2,20 @@ package uniandes.edu.co.SuperAndesNoSQL.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "categorias")
 public class Categoria {
     @Id
     private String id;
+
+    @Field("nombre")
     private String nombre;
+
+    @Field("descripcion")
     private String descripcion;
+
+    @Field("caracteristicas_de_almacenamiento")
     private String caracteristicasDeAlmacenamiento;
 
     // Getters y Setters

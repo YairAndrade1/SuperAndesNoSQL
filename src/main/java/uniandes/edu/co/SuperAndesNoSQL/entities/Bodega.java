@@ -2,20 +2,36 @@ package uniandes.edu.co.SuperAndesNoSQL.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.util.List;
 
 @Document(collection = "bodegas")
 public class Bodega {
     @Id
     private String id;
+    
+    @Field("nombre")
     private String nombre;
+    
+    @Field("tamanio")
     private int tamaño;
-    private String sucursalId; // Relación con la sucursal
-    private List<ProductoBodega> productos; // Lista de productos en la bodega
+
+    @Field("sucursal_id")
+    private String sucursalId; 
+
+    @Field("productos")
+    private List<ProductoBodega> productos; 
 
     public static class ProductoBodega {
+        
+        @Field("producto_id")
         private String productoId; // Referencia al producto
+        
+        @Field("cantidad")
         private int cantidad;
+
+        @Field("costo_promedio")
         private double costoPromedio;
 
         // Getters y Setters
