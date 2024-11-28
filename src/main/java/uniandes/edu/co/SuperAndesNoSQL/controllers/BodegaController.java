@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import uniandes.edu.co.SuperAndesNoSQL.entities.Bodega;
 import uniandes.edu.co.SuperAndesNoSQL.entities.Bodega.ProductoBodega;
 import uniandes.edu.co.SuperAndesNoSQL.repositories.BodegaRepository;
+import uniandes.edu.co.SuperAndesNoSQL.repositories.SucursalRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,10 +22,19 @@ public class BodegaController {
     @Autowired
     private BodegaRepository bodegaRepository;
 
+    @Autowired
+    private SucursalRepository sucursalRepository;
+
     // Crear una nueva bodega
     @PostMapping("/new")
     public ResponseEntity<String> crearBodega(@RequestBody Bodega bodega) {
         try {
+            if (bodegaRepository.existsById(bodega.getId())) {
+                return new ResponseEntity<>("El ID de la bodega ya existe", HttpStatus.BAD_REQUEST);
+            }
+            if (!sucursalRepository.existsById(bodega.getSucursalId())) {
+                return new ResponseEntity<>("La sucursal no existe", HttpStatus.BAD_REQUEST);
+            }
             bodegaRepository.save(bodega);
             return new ResponseEntity<>("Bodega creada exitosamente", HttpStatus.CREATED);
         } catch (Exception e) {
@@ -60,14 +70,15 @@ public class BodegaController {
     @PutMapping("/{id}")
     public ResponseEntity<String> actualizarBodega(@PathVariable String id, @RequestBody Bodega bodega) {
         try {
-            Optional<Bodega> bodegaExistente = bodegaRepository.findById(id);
-            if (bodegaExistente.isPresent()) {
-                bodega.setId(id); // Asegurar que el ID no cambie
-                bodegaRepository.save(bodega);
-                return new ResponseEntity<>("Bodega actualizada exitosamente", HttpStatus.OK);
-            } else {
+            if (!bodegaRepository.existsById(id)) {
                 return new ResponseEntity<>("Bodega no encontrada", HttpStatus.NOT_FOUND);
             }
+            if (!sucursalRepository.existsById(bodega.getSucursalId())) {
+                return new ResponseEntity<>("La sucursal no existe", HttpStatus.BAD_REQUEST);
+            }
+            bodega.setId(id); // Asegurar que el ID no cambie
+            bodegaRepository.save(bodega);
+            return new ResponseEntity<>("Bodega actualizada exitosamente", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Error al actualizar la bodega: " + e.getMessage(),
                     HttpStatus.INTERNAL_SERVER_ERROR);

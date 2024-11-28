@@ -21,10 +21,14 @@ public class SucursalController {
     @PostMapping("/new")
     public ResponseEntity<String> crearSucursal(@RequestBody Sucursal sucursal) {
         try {
+            if (sucursalRepository.existsById(sucursal.getId())) {
+                return new ResponseEntity<>("El ID de la sucursal ya existe", HttpStatus.BAD_REQUEST);
+            }
             sucursalRepository.save(sucursal);
             return new ResponseEntity<>("Sucursal creada exitosamente", HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al crear la sucursal: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al crear la sucursal: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -64,7 +68,8 @@ public class SucursalController {
                 return new ResponseEntity<>("Sucursal no encontrada", HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al actualizar la sucursal: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al actualizar la sucursal: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -79,7 +84,8 @@ public class SucursalController {
                 return new ResponseEntity<>("Sucursal no encontrada", HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al eliminar la sucursal: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al eliminar la sucursal: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -94,5 +100,4 @@ public class SucursalController {
         }
     }
 
-    
 }

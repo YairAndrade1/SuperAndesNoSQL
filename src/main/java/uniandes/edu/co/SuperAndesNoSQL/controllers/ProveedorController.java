@@ -21,10 +21,17 @@ public class ProveedorController {
     @PostMapping("/new")
     public ResponseEntity<String> crearProveedor(@RequestBody Proveedor proveedor) {
         try {
+            if (proveedorRepository.existsById(proveedor.getId())) {
+                return new ResponseEntity<>("El ID del proveedor ya existe", HttpStatus.BAD_REQUEST);
+            }
+            if (proveedorRepository.buscarPorNit(proveedor.getNit()) != null) {
+                return new ResponseEntity<>("El NIT del proveedor ya existe", HttpStatus.BAD_REQUEST);
+            }
             proveedorRepository.save(proveedor);
             return new ResponseEntity<>("Proveedor creado exitosamente", HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al crear el proveedor: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al crear el proveedor: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -57,6 +64,10 @@ public class ProveedorController {
         try {
             Optional<Proveedor> proveedorExistente = proveedorRepository.findById(id);
             if (proveedorExistente.isPresent()) {
+                Proveedor proveedorActual = proveedorExistente.get();
+                if (!proveedor.getNit().equals(proveedorActual.getNit())) {
+                    return new ResponseEntity<>("El NIT no puede ser cambiado", HttpStatus.BAD_REQUEST);
+                }
                 proveedor.setId(id); // Asegurar que el ID no cambie
                 proveedorRepository.save(proveedor);
                 return new ResponseEntity<>("Proveedor actualizado exitosamente", HttpStatus.OK);
@@ -64,7 +75,8 @@ public class ProveedorController {
                 return new ResponseEntity<>("Proveedor no encontrado", HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al actualizar el proveedor: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al actualizar el proveedor: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -79,7 +91,8 @@ public class ProveedorController {
                 return new ResponseEntity<>("Proveedor no encontrado", HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al eliminar el proveedor: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al eliminar el proveedor: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

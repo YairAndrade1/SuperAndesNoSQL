@@ -18,4 +18,7 @@ public interface ProductoRepository extends MongoRepository<Producto, String> {
     // Consulta personalizada: Buscar productos por categoría
     @Query("{ 'categoria_id': ?0 }")
     List<Producto> buscarPorCategoria(String categoriaId);
+
+    @Query("{ '_id': { $in: ?0 } }")
+    List<Producto> findAllByIds(List<String> ids);
 }

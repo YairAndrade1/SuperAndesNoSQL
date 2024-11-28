@@ -5,8 +5,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uniandes.edu.co.SuperAndesNoSQL.entities.OrdenDeCompra;
+import uniandes.edu.co.SuperAndesNoSQL.entities.OrdenDeCompra.DetalleProducto;
 import uniandes.edu.co.SuperAndesNoSQL.repositories.OrdenDeCompraRepository;
+import uniandes.edu.co.SuperAndesNoSQL.repositories.ProductoRepository;
+import uniandes.edu.co.SuperAndesNoSQL.repositories.ProveedorRepository;
+import uniandes.edu.co.SuperAndesNoSQL.repositories.SucursalRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,10 +22,43 @@ public class OrdenDeCompraController {
     @Autowired
     private OrdenDeCompraRepository ordenDeCompraRepository;
 
+    @Autowired
+    private SucursalRepository sucursalRepository;
+
+    @Autowired
+    private ProveedorRepository proveedorRepository;
+
+    @Autowired 
+    private ProductoRepository productoRepository;
+    
     // Crear una nueva orden de compra
     @PostMapping("/new")
     public ResponseEntity<String> crearOrdenDeCompra(@RequestBody OrdenDeCompra ordenDeCompra) {
         try {
+            // Validar que la sucursal exista
+            if (!sucursalRepository.existsById(ordenDeCompra.getSucursalId())) {
+                return new ResponseEntity<>("La sucursal no existe", HttpStatus.BAD_REQUEST);
+            }
+    
+            // Validar que el proveedor exista
+            if (!proveedorRepository.existsById(ordenDeCompra.getProveedorId())) {
+                return new ResponseEntity<>("El proveedor no existe", HttpStatus.BAD_REQUEST);
+            }
+    
+            // Validar que todos los productos en el detalle existan
+            for (DetalleProducto detalle : ordenDeCompra.getDetalles()) {
+                if (!productoRepository.existsById(detalle.getProductoId())) {
+                    return new ResponseEntity<>("El producto con ID " + detalle.getProductoId() + " no existe", HttpStatus.BAD_REQUEST);
+                }
+            }
+    
+            // Establecer la fecha de creación a la fecha actual del sistema
+            ordenDeCompra.setFechaCreacion(new Date());
+    
+            // Establecer el estado inicial a "vigente"
+            ordenDeCompra.setEstado("Vigente");
+    
+            // Guardar la orden de compra
             ordenDeCompraRepository.save(ordenDeCompra);
             return new ResponseEntity<>("Orden de compra creada exitosamente", HttpStatus.CREATED);
         } catch (Exception e) {

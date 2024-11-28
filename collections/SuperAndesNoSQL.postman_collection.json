@@ -10,6 +10,55 @@
 			"name": "RF y RFC",
 			"item": [
 				{
+					"name": "Sucursales",
+					"item": [
+						{
+							"name": "Registrar una Nueva Sucursal",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"sucursal_001\",\r\n    \"nombre\": \"sucursal_prueba\",\r\n    \"direccion\": \"carrera 71a #128-54\",\r\n    \"ciudad\": \"bogota\",\r\n    \"telefono\": \"601 321313213\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUrl}}/sucursales/new",
+									"host": [
+										"{{BaseUrl}}"
+									],
+									"path": [
+										"sucursales",
+										"new"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Todas las Sucursales",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/sucursales",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sucursales"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Productos",
 					"item": [
 						{
@@ -119,7 +168,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"nombre\": \"Leche Deslactosada\",\r\n    \"precioUnitario\": 3600,\r\n    \"presentacion\": \"Botella de 1L\",\r\n    \"categoriaId\": \"cat_lacteos\",\r\n    \"codigoBarras\": \"1234567890123\",\r\n    \"fechaExpiracion\": \"2024-12-31T00:00:00Z\"\r\n}\r\ns",
+									"raw": "{\r\n    \"id\": \"prod_leche\",\r\n    \"nombre\": \"Leche Deslactosada\",\r\n    \"precioUnitario\": 3600,\r\n    \"presentacion\": \"Botella de 1L\",\r\n    \"categoriaId\": \"cat_lacteos\",\r\n    \"codigoBarras\": \"1234567890123\",\r\n    \"fechaExpiracion\": \"2024-12-31T00:00:00Z\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -163,7 +212,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{BaseUrl}}/productos/filtrar?precioMin=0&precioMax=7000&fechaVencimiento=2024-08-15&categoriaId=cat_alimentos",
+									"raw": "{{BaseUrl}}/productos/filtrar?precioMin=6000&precioMax=7000&fechaVencimiento=2024-08-15&categoriaId=cat_alimentos",
 									"host": [
 										"{{BaseUrl}}"
 									],
@@ -174,7 +223,7 @@
 									"query": [
 										{
 											"key": "precioMin",
-											"value": "0"
+											"value": "6000"
 										},
 										{
 											"key": "precioMax",
@@ -205,7 +254,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"bodega_prueba\",\r\n    \"nombre\": \"Bodega Central\",\r\n    \"tamaño\": 500,\r\n    \"sucursalId\": \"sucursal_001\",\r\n    \"productos\": [\r\n        {\r\n            \"productoId\": \"prod_001\",\r\n            \"cantidad\": 100,\r\n            \"costoPromedio\": 2500\r\n        },\r\n        {\r\n            \"productoId\": \"prod_002\",\r\n            \"cantidad\": 50,\r\n            \"costoPromedio\": 3500\r\n        }\r\n    ]\r\n}\r\n",
+									"raw": "{\r\n    \"id\": \"bodega_prueba2\",\r\n    \"nombre\": \"Bodega sur\",\r\n    \"tamaño\": 500,\r\n    \"sucursalId\": \"sucursal_001\",\r\n    \"productos\": [\r\n        {\r\n            \"productoId\": \"prod_001\",\r\n            \"cantidad\": 100,\r\n            \"costoPromedio\": 2500\r\n        },\r\n        {\r\n            \"productoId\": \"prod_002\",\r\n            \"cantidad\": 50,\r\n            \"costoPromedio\": 3500\r\n        }\r\n    ]\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -307,7 +356,7 @@
 							"response": []
 						},
 						{
-							"name": "Eliminar Producto por ID",
+							"name": "Eliminar Bodega por ID",
 							"request": {
 								"method": "DELETE",
 								"header": [],
@@ -468,7 +517,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"orden_001\",\r\n    \"fechaCreacion\": \"2024-11-20T00:00:00Z\",\r\n    \"fechaEntregaEsperada\": \"2024-11-25T00:00:00Z\",\r\n    \"estado\": \"Pendiente\",\r\n    \"sucursalId\": \"sucursal_001\",\r\n    \"proveedorId\": \"proveedor_001\",\r\n    \"detalles\": [\r\n        {\r\n            \"productoId\": \"prod_001\",\r\n            \"cantidad\": 10,\r\n            \"precioUnitario\": 3500\r\n        },\r\n        {\r\n            \"productoId\": \"prod_002\",\r\n            \"cantidad\": 5,\r\n            \"precioUnitario\": 1500\r\n        }\r\n    ]\r\n}\r\n",
+									"raw": "{\r\n    \"id\": \"orden_001\",\r\n    \"fechaCreacion\": \"2024-11-20T00:00:00Z\",\r\n    \"fechaEntregaEsperada\": \"2024-11-25T00:00:00Z\",\r\n    \"estado\": \"Vigente\",\r\n    \"sucursalId\": \"sucursal_001\",\r\n    \"proveedorId\": \"proveedor_001\",\r\n    \"detalles\": [\r\n        {\r\n            \"productoId\": \"prod_leche\",\r\n            \"cantidad\": 10,\r\n            \"precioUnitario\": 3500\r\n        },\r\n        {\r\n            \"productoId\": \"prod_arroz\",\r\n            \"cantidad\": 5,\r\n            \"precioUnitario\": 1500\r\n        }\r\n    ]\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"

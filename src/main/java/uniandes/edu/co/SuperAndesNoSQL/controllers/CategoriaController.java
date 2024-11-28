@@ -21,10 +21,14 @@ public class CategoriaController {
     @PostMapping("/new")
     public ResponseEntity<String> crearCategoria(@RequestBody Categoria categoria) {
         try {
+            if (categoriaRepository.existsById(categoria.getId())) {
+                return new ResponseEntity<>("El ID de la categoría ya existe", HttpStatus.BAD_REQUEST);
+            }
             categoriaRepository.save(categoria);
             return new ResponseEntity<>("Categoría creada exitosamente", HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al crear la categoría: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al crear la categoría: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -57,14 +61,19 @@ public class CategoriaController {
         try {
             Optional<Categoria> categoriaExistente = categoriaRepository.findById(id);
             if (categoriaExistente.isPresent()) {
-                categoria.setId(id);
+                Categoria categoriaActual = categoriaExistente.get();
+                if (!categoria.getId().equals(categoriaActual.getId())) {
+                    return new ResponseEntity<>("El ID no puede ser cambiado", HttpStatus.BAD_REQUEST);
+                }
+                categoria.setId(id); // Asegurar que el ID no cambie
                 categoriaRepository.save(categoria);
                 return new ResponseEntity<>("Categoría actualizada exitosamente", HttpStatus.OK);
             } else {
                 return new ResponseEntity<>("Categoría no encontrada", HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al actualizar la categoría: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al actualizar la categoría: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -79,7 +88,8 @@ public class CategoriaController {
                 return new ResponseEntity<>("Categoría no encontrada", HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
-            return new ResponseEntity<>("Error al eliminar la categoría: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error al eliminar la categoría: " + e.getMessage(),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

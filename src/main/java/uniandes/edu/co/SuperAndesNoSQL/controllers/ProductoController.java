@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import uniandes.edu.co.SuperAndesNoSQL.entities.Producto;
+import uniandes.edu.co.SuperAndesNoSQL.repositories.CategoriaRepository;
 import uniandes.edu.co.SuperAndesNoSQL.repositories.ProductoRepository;
 
 import java.util.List;
@@ -18,10 +19,22 @@ public class ProductoController {
     @Autowired
     private ProductoRepository productoRepository;
 
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
     // Crear un nuevo producto
     @PostMapping("/new")
     public ResponseEntity<String> crearProducto(@RequestBody Producto producto) {
         try {
+            if (productoRepository.existsById(producto.getId())) {
+                return new ResponseEntity<>("El ID del producto ya existe", HttpStatus.BAD_REQUEST);
+            }
+            if (productoRepository.buscarPorCodigoBarras(producto.getCodigoBarras()) != null) {
+                return new ResponseEntity<>("El código de barras del producto ya existe", HttpStatus.BAD_REQUEST);
+            }
+            if (!categoriaRepository.existsById(producto.getCategoriaId())) {
+                return new ResponseEntity<>("La categoría asociada no existe", HttpStatus.BAD_REQUEST);
+            }
             productoRepository.save(producto);
             return new ResponseEntity<>("Producto creado exitosamente", HttpStatus.CREATED);
         } catch (Exception e) {
@@ -59,6 +72,17 @@ public class ProductoController {
         try {
             Optional<Producto> productoExistente = productoRepository.findById(id);
             if (productoExistente.isPresent()) {
+                Producto productoActual = productoExistente.get();
+                if (!producto.getId().equals(productoActual.getId())) {
+                    return new ResponseEntity<>("El ID no puede ser cambiado", HttpStatus.BAD_REQUEST);
+                }
+                if (!producto.getCodigoBarras().equals(productoActual.getCodigoBarras()) &&
+                        productoRepository.buscarPorCodigoBarras(producto.getCodigoBarras()) != null) {
+                    return new ResponseEntity<>("El código de barras del producto ya existe", HttpStatus.BAD_REQUEST);
+                }
+                if (!categoriaRepository.existsById(producto.getCategoriaId())) {
+                    return new ResponseEntity<>("La categoría asociada no existe", HttpStatus.BAD_REQUEST);
+                }
                 producto.setId(id); // Asegurar que el ID no cambie
                 productoRepository.save(producto);
                 return new ResponseEntity<>("Producto actualizado exitosamente", HttpStatus.OK);
