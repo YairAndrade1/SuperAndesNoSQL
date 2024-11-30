@@ -1,0 +1,186 @@
+[{
+  "_id": "prod_001",
+  "nombre": "Leche Entera",
+  "precio_unitario": 2000,
+  "presentacion": "Botella 1L",
+  "categoria_id": "categoria_001",
+  "codigo_barras": "1234567890123",
+  "fecha_expiracion": {
+    "$date": "2024-12-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_002",
+  "nombre": "Carne de Res",
+  "precio_unitario": 15000,
+  "presentacion": "Kilo",
+  "categoria_id": "categoria_001",
+  "codigo_barras": "1234567890124",
+  "fecha_expiracion": {
+    "$date": "2024-11-25T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_003",
+  "nombre": "Pollo Congelado",
+  "precio_unitario": 12000,
+  "presentacion": "Paquete 1kg",
+  "categoria_id": "categoria_001",
+  "codigo_barras": "1234567890125",
+  "fecha_expiracion": {
+    "$date": "2024-12-15T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_004",
+  "nombre": "Arroz",
+  "precio_unitario": 2500,
+  "presentacion": "Paquete 1kg",
+  "categoria_id": "categoria_002",
+  "codigo_barras": "2234567890123",
+  "fecha_expiracion": {
+    "$date": "2026-05-10T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_005",
+  "nombre": "Fideos",
+  "precio_unitario": 1500,
+  "presentacion": "Paquete 500g",
+  "categoria_id": "categoria_002",
+  "codigo_barras": "2234567890124",
+  "fecha_expiracion": {
+    "$date": "2025-11-30T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_006",
+  "nombre": "Aceite",
+  "precio_unitario": 4000,
+  "presentacion": "Botella 1L",
+  "categoria_id": "categoria_002",
+  "codigo_barras": "2234567890125",
+  "fecha_expiracion": {
+    "$date": "2026-01-10T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_007",
+  "nombre": "Detergente Líquido",
+  "precio_unitario": 3000,
+  "presentacion": "Botella 500ml",
+  "categoria_id": "categoria_003",
+  "codigo_barras": "3234567890123",
+  "fecha_expiracion": {
+    "$date": "2025-08-15T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_008",
+  "nombre": "Jabón en Barra",
+  "precio_unitario": 1000,
+  "presentacion": "Caja 4 unidades",
+  "categoria_id": "categoria_003",
+  "codigo_barras": "3234567890124",
+  "fecha_expiracion": {
+    "$date": "2024-07-20T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_009",
+  "nombre": "Limpiador Multiusos",
+  "precio_unitario": 2500,
+  "presentacion": "Botella 1L",
+  "categoria_id": "categoria_003",
+  "codigo_barras": "3234567890125",
+  "fecha_expiracion": {
+    "$date": "2025-06-30T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_010",
+  "nombre": "Pechugas de Pollo Congeladas",
+  "precio_unitario": 12000,
+  "presentacion": "Paquete 1kg",
+  "categoria_id": "categoria_004",
+  "codigo_barras": "4234567890123",
+  "fecha_expiracion": {
+    "$date": "2025-01-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_011",
+  "nombre": "Helado de Vainilla",
+  "precio_unitario": 5000,
+  "presentacion": "Caja 500ml",
+  "categoria_id": "categoria_004",
+  "codigo_barras": "4234567890124",
+  "fecha_expiracion": {
+    "$date": "2025-03-15T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_012",
+  "nombre": "Verduras Congeladas",
+  "precio_unitario": 3500,
+  "presentacion": "Paquete 500g",
+  "categoria_id": "categoria_004",
+  "codigo_barras": "4234567890125",
+  "fecha_expiracion": {
+    "$date": "2026-01-20T00:00:00.000Z"
+  }
+},
+{
+  "_id": "prod_013",
+  "nombre": "Televisor LED 32''",
+  "precio_unitario": 800000,
+  "presentacion": "Unidad",
+  "categoria_id": "categoria_005",
+  "codigo_barras": "5234567890123",
+  "fecha_expiracion": null
+},
+{
+  "_id": "prod_014",
+  "nombre": "Laptop HP",
+  "precio_unitario": 1800000,
+  "presentacion": "Unidad",
+  "categoria_id": "categoria_005",
+  "codigo_barras": "5234567890124",
+  "fecha_expiracion": null
+},
+{
+  "_id": "prod_015",
+  "nombre": "Smartphone Samsung",
+  "precio_unitario": 1000000,
+  "presentacion": "Unidad",
+  "categoria_id": "categoria_005",
+  "codigo_barras": "5234567890125",
+  "fecha_expiracion": null
+},
+{
+  "_id": "prod_016",
+  "nombre": "Camiseta de Algodón",
+  "precio_unitario": 25000,
+  "presentacion": "Unidad",
+  "categoria_id": "categoria_006",
+  "codigo_barras": "6234567890123",
+  "fecha_expiracion": null
+},
+{
+  "_id": "prod_017",
+  "nombre": "Pantalón de Mezclilla",
+  "precio_unitario": 40000,
+  "presentacion": "Unidad",
+  "categoria_id": "categoria_006",
+  "codigo_barras": "6234567890124",
+  "fecha_expiracion": null
+},
+{
+  "_id": "prod_018",
+  "nombre": "Chaqueta de Cuero",
+  "precio_unitario": 80000,
+  "presentacion": "Unidad",
+  "categoria_id": "categoria_006",
+  "codigo_barras": "6234567890125",
+  "fecha_expiracion": null
+}]

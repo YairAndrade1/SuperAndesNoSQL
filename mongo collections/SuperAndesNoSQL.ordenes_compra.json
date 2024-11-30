@@ -1,0 +1,104 @@
+[{
+  "_id": "orden_001",
+  "fecha_creacion": {
+    "$date": "2024-11-01T00:00:00.000Z"
+  },
+  "estado": "Vigente",
+  "sucursal_id": "sucursal_001",
+  "proveedor_id": "proveedor_001",
+  "detalles": [
+    {
+      "producto_id": "prod_001",
+      "cantidad": 50,
+      "precio_unitario": 2000
+    },
+    {
+      "producto_id": "prod_003",
+      "cantidad": 30,
+      "precio_unitario": 12000
+    },
+    {
+      "producto_id": "prod_006",
+      "cantidad": 100,
+      "precio_unitario": 4000
+    }
+  ]
+},
+{
+  "_id": "orden_002",
+  "fecha_creacion": {
+    "$date": "2024-11-02T00:00:00.000Z"
+  },
+  "estado": "Vigente",
+  "sucursal_id": "sucursal_002",
+  "proveedor_id": "proveedor_002",
+  "detalles": [
+    {
+      "producto_id": "prod_004",
+      "cantidad": 100,
+      "precio_unitario": 2500
+    },
+    {
+      "producto_id": "prod_005",
+      "cantidad": 150,
+      "precio_unitario": 1500
+    },
+    {
+      "producto_id": "prod_007",
+      "cantidad": 75,
+      "precio_unitario": 3000
+    }
+  ]
+},
+{
+  "_id": "orden_003",
+  "fecha_creacion": {
+    "$date": "2024-11-03T00:00:00.000Z"
+  },
+  "estado": "En Proceso",
+  "sucursal_id": "sucursal_003",
+  "proveedor_id": "proveedor_003",
+  "detalles": [
+    {
+      "producto_id": "prod_008",
+      "cantidad": 200,
+      "precio_unitario": 1000
+    },
+    {
+      "producto_id": "prod_009",
+      "cantidad": 150,
+      "precio_unitario": 2500
+    },
+    {
+      "producto_id": "prod_010",
+      "cantidad": 50,
+      "precio_unitario": 12000
+    }
+  ]
+},
+{
+  "_id": "orden_004",
+  "fecha_creacion": {
+    "$date": "2024-11-04T00:00:00.000Z"
+  },
+  "estado": "Vigente",
+  "sucursal_id": "sucursal_004",
+  "proveedor_id": "proveedor_004",
+  "detalles": [
+    {
+      "producto_id": "prod_011",
+      "cantidad": 75,
+      "precio_unitario": 5000
+    },
+    {
+      "producto_id": "prod_012",
+      "cantidad": 100,
+      "precio_unitario": 3500
+    },
+    {
+      "producto_id": "prod_013",
+      "cantidad": 50,
+      "precio_unitario": 800000
+    }
+  ]
+}]

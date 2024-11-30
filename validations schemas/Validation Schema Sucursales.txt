@@ -1,0 +1,36 @@
+Validation Schema Sucursales
+
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'nombre',
+      'direccion',
+      'ciudad',
+      'telefono'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'string',
+        description: 'El ID de la sucursal debe ser una cadena y es obligatorio.'
+      },
+      nombre: {
+        bsonType: 'string',
+        description: 'El nombre de la sucursal debe ser una cadena y es obligatorio.'
+      },
+      direccion: {
+        bsonType: 'string',
+        description: 'La dirección de la sucursal debe ser una cadena y es obligatoria.'
+      },
+      ciudad: {
+        bsonType: 'string',
+        description: 'La ciudad de la sucursal debe ser una cadena y es obligatoria.'
+      },
+      telefono: {
+        bsonType: 'string',
+        description: 'El teléfono de la sucursal debe ser una cadena y es obligatorio.'
+      }
+    }
+  }
+}

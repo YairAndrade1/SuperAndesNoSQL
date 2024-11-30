@@ -1,0 +1,40 @@
+[{
+  "_id": "proveedor_001",
+  "nit": "900123456",
+  "nombre": "Proveedora S.A.S.",
+  "direccion": "Calle 123, Bogotá, Colombia",
+  "nombre_contacto": "Carlos Pérez",
+  "telefono_contacto": "3216549870"
+},
+{
+  "_id": "proveedor_002",
+  "nit": "800987654",
+  "nombre": "Comercial Productos Ltda.",
+  "direccion": "Carrera 45, Medellín, Colombia",
+  "nombre_contacto": "María Gómez",
+  "telefono_contacto": "3112233445"
+},
+{
+  "_id": "proveedor_003",
+  "nit": "700456789",
+  "nombre": "Alimentos y Bebidas S.A.",
+  "direccion": "Avenida 68, Barranquilla, Colombia",
+  "nombre_contacto": "Juan Rodríguez",
+  "telefono_contacto": "3014567890"
+},
+{
+  "_id": "proveedor_004",
+  "nit": "600123987",
+  "nombre": "TecnoElectro S.A.",
+  "direccion": "Avenida El Dorado, Bogotá, Colombia",
+  "nombre_contacto": "Ana López",
+  "telefono_contacto": "3209876543"
+},
+{
+  "_id": "proveedor_005",
+  "nit": "500123654",
+  "nombre": "Muebles y Decoración S.A.",
+  "direccion": "Calle 70, Cali, Colombia",
+  "nombre_contacto": "Luis Martínez",
+  "telefono_contacto": "3102345678"
+}]

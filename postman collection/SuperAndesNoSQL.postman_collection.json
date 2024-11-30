@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "RF y RFC",
+			"name": "CRUD",
 			"item": [
 				{
 					"name": "Sucursales",
@@ -59,6 +59,157 @@
 					]
 				},
 				{
+					"name": "Bodegas",
+					"item": [
+						{
+							"name": "Registrar una Nueva Bodega",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"bodega_prueba1\",\r\n    \"nombre\": \"Bodega sur\",\r\n    \"tamaño\": 500,\r\n    \"sucursalId\": \"sucursal_001\",\r\n    \"productos\": [\r\n        {\r\n            \"productoId\": \"prod_001\",\r\n            \"cantidad\": 100,\r\n            \"costoPromedio\": 2500\r\n        },\r\n        {\r\n            \"productoId\": \"prod_002\",\r\n            \"cantidad\": 50,\r\n            \"costoPromedio\": 3500\r\n        }\r\n    ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUrl}}/bodegas/new",
+									"host": [
+										"{{BaseUrl}}"
+									],
+									"path": [
+										"bodegas",
+										"new"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Todas las Bodegas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseUrl}}/bodegas",
+									"host": [
+										"{{BaseUrl}}"
+									],
+									"path": [
+										"bodegas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Bodega por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseUrl}}/bodegas/bodega_prueba",
+									"host": [
+										"{{BaseUrl}}"
+									],
+									"path": [
+										"bodegas",
+										"bodega_prueba"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Bodegas de una Sucursal",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseUrl}}/bodegas/sucursal/sucursal_001",
+									"host": [
+										"{{BaseUrl}}"
+									],
+									"path": [
+										"bodegas",
+										"sucursal",
+										"sucursal_001"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Bodega por ID",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"bodega_prueba\",\r\n    \"nombre\": \"Bodega Central\",\r\n    \"tamaño\": 500,\r\n    \"sucursalId\": \"sucursal_001\",\r\n    \"productos\": [\r\n        {\r\n            \"productoId\": \"prod_leche\",\r\n            \"cantidad\": 100,\r\n            \"costoPromedio\": 2500.0\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUrl}}/bodegas/bodega_prueba",
+									"host": [
+										"{{BaseUrl}}"
+									],
+									"path": [
+										"bodegas",
+										"bodega_prueba"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar Bodega por ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BaseUrl}}/bodegas/bodega_prueba1",
+									"host": [
+										"{{BaseUrl}}"
+									],
+									"path": [
+										"bodegas",
+										"bodega_prueba1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Inventario por Sucursal",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseUrl}}/bodegas/sucursal/sucursal_001/inventario",
+									"host": [
+										"{{BaseUrl}}"
+									],
+									"path": [
+										"bodegas",
+										"sucursal",
+										"sucursal_001",
+										"inventario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Productos",
 					"item": [
 						{
@@ -68,7 +219,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"prod_leche\",\r\n    \"nombre\": \"Leche\",\r\n    \"precioUnitario\": 3500,\r\n    \"presentacion\": \"Botella de 1L\",\r\n    \"categoriaId\": \"cat_lacteos\",\r\n    \"codigoBarras\": \"1234567890123\",\r\n    \"fechaExpiracion\": \"2024-12-31T00:00:00Z\"\r\n}\r\n",
+									"raw": "{\r\n    \"id\": \"prod_leche\",\r\n    \"nombre\": \"Leche\",\r\n    \"precioUnitario\": 3500,\r\n    \"presentacion\": \"Botella de 1L\",\r\n    \"categoriaId\": \"cat_prueba\",\r\n    \"codigoBarras\": \"1234567890123\",\r\n    \"fechaExpiracion\": \"2024-12-31T00:00:00Z\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -237,157 +388,6 @@
 											"key": "categoriaId",
 											"value": "cat_alimentos"
 										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Bodegas",
-					"item": [
-						{
-							"name": "Registrar una Nueva Bodega",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"bodega_prueba2\",\r\n    \"nombre\": \"Bodega sur\",\r\n    \"tamaño\": 500,\r\n    \"sucursalId\": \"sucursal_001\",\r\n    \"productos\": [\r\n        {\r\n            \"productoId\": \"prod_001\",\r\n            \"cantidad\": 100,\r\n            \"costoPromedio\": 2500\r\n        },\r\n        {\r\n            \"productoId\": \"prod_002\",\r\n            \"cantidad\": 50,\r\n            \"costoPromedio\": 3500\r\n        }\r\n    ]\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BaseUrl}}/bodegas/new",
-									"host": [
-										"{{BaseUrl}}"
-									],
-									"path": [
-										"bodegas",
-										"new"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Obtener Todas las Bodegas",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BaseUrl}}/bodegas",
-									"host": [
-										"{{BaseUrl}}"
-									],
-									"path": [
-										"bodegas"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Obtener Bodega por ID",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BaseUrl}}/bodegas/bodega_prueba",
-									"host": [
-										"{{BaseUrl}}"
-									],
-									"path": [
-										"bodegas",
-										"bodega_prueba"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Obtener Bodegas de una Sucursal",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BaseUrl}}/bodegas/sucursal/sucursal_001",
-									"host": [
-										"{{BaseUrl}}"
-									],
-									"path": [
-										"bodegas",
-										"sucursal",
-										"sucursal_001"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Actualizar Bodega por ID",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"bodega_prueba\",\r\n    \"nombre\": \"Bodega Central\",\r\n    \"tamaño\": 500,\r\n    \"sucursalId\": \"sucursal_001\",\r\n    \"productos\": [\r\n        {\r\n            \"productoId\": \"prod_leche\",\r\n            \"cantidad\": 100,\r\n            \"costoPromedio\": 2500.0\r\n        }\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BaseUrl}}/bodegas/bodega_prueba",
-									"host": [
-										"{{BaseUrl}}"
-									],
-									"path": [
-										"bodegas",
-										"bodega_prueba"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Eliminar Bodega por ID",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{BaseUrl}}/bodegas/bodega_prueba",
-									"host": [
-										"{{BaseUrl}}"
-									],
-									"path": [
-										"bodegas",
-										"bodega_prueba"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Obtener Inventario por Sucursal",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BaseUrl}}/bodegas/sucursal/sucursal_001/inventario",
-									"host": [
-										"{{BaseUrl}}"
-									],
-									"path": [
-										"bodegas",
-										"sucursal",
-										"sucursal_001",
-										"inventario"
 									]
 								}
 							},
@@ -920,6 +920,279 @@
 							"response": []
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "RF",
+			"item": [
+				{
+					"name": "RF1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"sucursal_999\",\r\n    \"nombre\": \"sucursal_prueba\",\r\n    \"direccion\": \"carrera 71a #128-54\",\r\n    \"ciudad\": \"Bogotá\",\r\n    \"telefono\": \"601 321313213\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/sucursales/new",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"sucursales",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RF2-C",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"bodega_prueba\",\r\n    \"nombre\": \"Bodega Prueba\",\r\n    \"tamaño\": 500,\r\n    \"sucursalId\": \"sucursal_999\",\r\n    \"productos\": [\r\n        {\r\n            \"productoId\": \"prod_001\",\r\n            \"cantidad\": 100,\r\n            \"costoPromedio\": 2500\r\n        },\r\n        {\r\n            \"productoId\": \"prod_002\",\r\n            \"cantidad\": 50,\r\n            \"costoPromedio\": 3500\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/bodegas/new",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"bodegas",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RF2-D",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/bodegas/bodega_prueba",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"bodegas",
+								"bodega_prueba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RF3-C",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"proveedor_999\",\r\n    \"nit\": \"123999999-0\",\r\n    \"nombre\": \"Proveedor Central\",\r\n    \"direccion\": \"Carrera 45 #23-56\",\r\n    \"nombreContacto\": \"Nicolas Angulo\",\r\n    \"telefonoContacto\": \"3001234567\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/proveedores/new",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"proveedores",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RF3-U",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"proveedor_999\",\r\n    \"nit\": \"123999999-0\",\r\n    \"nombre\": \"Proveedor Central\",\r\n    \"direccion\": \"Carrera 45 #23-56\",\r\n    \"nombreContacto\": \"Ryan Gosling\",\r\n    \"telefonoContacto\": \"3193454391\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/proveedores/proveedor_999",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"proveedores",
+								"proveedor_999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RF4",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"categoria_999\",\r\n  \"nombre\": \"Perecederos\",\r\n  \"descripcion\": \"Productos con fecha de vencimiento, como alimentos frescos, lácteos, etc.\",\r\n  \"caracteristicasDeAlmacenamiento\": \"Refrigeración entre 2-4°C, Humedad controlada, Duración de 5-15 días dependiendo del producto.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/categorias/new",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RF5",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"prod_999\",\r\n  \"nombre\": \"Leche Entera\",\r\n  \"precioUnitario\": 2000,\r\n  \"presentacion\": \"Botella 1L\",\r\n  \"categoriaId\": \"categoria_999\",\r\n  \"codigoBarras\": \"1239999999999\",\r\n  \"fechaExpiracion\":  \"2024-12-31T00:00:00Z\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/productos/new",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"productos",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RF6",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"orden_999\",\r\n    \"fechaCreacion\": \"2024-11-20T00:00:00Z\",\r\n    \"fechaEntregaEsperada\": \"2024-11-25T00:00:00Z\",\r\n    \"estado\": \"Vigente\",\r\n    \"sucursalId\": \"sucursal_999\",\r\n    \"proveedorId\": \"proveedor_999\",\r\n    \"detalles\": [\r\n        {\r\n            \"productoId\": \"prod_001\",\r\n            \"cantidad\": 10,\r\n            \"precioUnitario\": 3500\r\n        },\r\n        {\r\n            \"productoId\": \"prod_002\",\r\n            \"cantidad\": 5,\r\n            \"precioUnitario\": 1500\r\n        }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/ordenes-compra/new",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"ordenes-compra",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RFC",
+			"item": [
+				{
+					"name": "RFC1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/productos/filtrar?precioMin=0&precioMax=7000&fechaVencimiento=2024-08-15&categoriaId=categoria_001",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"productos",
+								"filtrar"
+							],
+							"query": [
+								{
+									"key": "precioMin",
+									"value": "0"
+								},
+								{
+									"key": "precioMax",
+									"value": "7000"
+								},
+								{
+									"key": "fechaVencimiento",
+									"value": "2024-08-15"
+								},
+								{
+									"key": "categoriaId",
+									"value": "categoria_001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RFC2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/bodegas/sucursal/sucursal_001/inventario",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"bodegas",
+								"sucursal",
+								"sucursal_001",
+								"inventario"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

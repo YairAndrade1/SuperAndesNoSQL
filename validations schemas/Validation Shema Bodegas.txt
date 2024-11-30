@@ -1,0 +1,67 @@
+Validations Shema Bodegas
+
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'nombre',
+      'tamanio',
+      'sucursal_id',
+      'productos'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'string',
+        description: 'El ID de la bodega debe ser una cadena y es obligatorio.'
+      },
+      nombre: {
+        bsonType: 'string',
+        description: 'El nombre de la bodega debe ser una cadena y es obligatorio.'
+      },
+      tamanio: {
+        bsonType: 'int',
+        minimum: 0,
+        description: 'El tamaño debe ser un número entero mayor o igual a 0 y es obligatorio.'
+      },
+      sucursal_id: {
+        bsonType: 'string',
+        description: 'El ID de la sucursal debe ser una cadena y es obligatorio.'
+      },
+      productos: {
+        bsonType: 'array',
+        items: {
+          bsonType: 'object',
+          required: [
+            'producto_id',
+            'cantidad',
+            'costo_promedio'
+          ],
+          properties: {
+            producto_id: {
+              bsonType: 'string',
+              description: 'El ID del producto debe ser una cadena y es obligatorio.'
+            },
+            cantidad: {
+              bsonType: 'int',
+              minimum: 0,
+              description: 'La cantidad debe ser un número entero mayor o igual a 0 y es obligatoria.'
+            },
+            costo_promedio: {
+              bsonType: [
+                'double',
+                'int'
+              ],
+              minimum: 0,
+              description: 'El costo promedio debe ser un número mayor o igual a 0 y es obligatorio.'
+            }
+          }
+        },
+        description: 'La lista de productos debe ser un array de objetos y es obligatoria.'
+      }
+    }
+  }
+}
+
+ 
+

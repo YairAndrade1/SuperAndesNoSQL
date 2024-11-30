@@ -1,0 +1,41 @@
+Validation Schema Proveedores
+
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'nit',
+      'nombre',
+      'direccion',
+      'nombre_contacto',
+      'telefono_contacto'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'string',
+        description: 'El ID del proveedor debe ser una cadena y es obligatorio.'
+      },
+      nit: {
+        bsonType: 'string',
+        description: 'El NIT del proveedor debe ser una cadena y es obligatorio.'
+      },
+      nombre: {
+        bsonType: 'string',
+        description: 'El nombre del proveedor debe ser una cadena y es obligatorio.'
+      },
+      direccion: {
+        bsonType: 'string',
+        description: 'La dirección del proveedor debe ser una cadena y es obligatoria.'
+      },
+      nombre_contacto: {
+        bsonType: 'string',
+        description: 'El nombre del contacto debe ser una cadena y es obligatorio.'
+      },
+      telefono_contacto: {
+        bsonType: 'string',
+        description: 'El teléfono del contacto debe ser una cadena y es obligatorio.'
+      }
+    }
+  }
+}

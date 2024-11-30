@@ -1,0 +1,77 @@
+Validation Schema Ordenes de Compra 
+
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'fecha_creacion',
+      'estado',
+      'sucursal_id',
+      'proveedor_id',
+      'detalles'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'string',
+        description: 'El ID de la orden debe ser una cadena y es obligatorio.'
+      },
+      fecha_creacion: {
+        bsonType: 'date',
+        description: 'La fecha de creación debe ser una fecha válida y es obligatoria.'
+      },
+      fecha_entrega_esperada: {
+        bsonType: 'date',
+        description: 'La fecha de entrega esperada debe ser una fecha válida.'
+      },
+      estado: {
+        bsonType: 'string',
+        'enum': [
+          'Vigente',
+          'En Proceso',
+          'Finalizada',
+          'Vencida'
+        ],
+        description: 'El estado debe ser una de las opciones válidas.'
+      },
+      sucursal_id: {
+        bsonType: 'string',
+        description: 'El ID de la sucursal debe ser una cadena y es obligatorio.'
+      },
+      proveedor_id: {
+        bsonType: 'string',
+        description: 'El ID del proveedor debe ser una cadena y es obligatorio.'
+      },
+      detalles: {
+        bsonType: 'array',
+        items: {
+          bsonType: 'object',
+          required: [
+            'producto_id',
+            'cantidad',
+            'precio_unitario'
+          ],
+          properties: {
+            producto_id: {
+              bsonType: 'string',
+              description: 'El ID del producto debe ser una cadena y es obligatorio.'
+            },
+            cantidad: {
+              bsonType: 'int',
+              minimum: 1,
+              description: 'La cantidad debe ser mayor o igual a 1 y es obligatoria.'
+            },
+            precio_unitario: {
+              bsonType: [
+                'double',
+                'int'
+              ],
+              minimum: 0,
+              description: 'El precio unitario debe ser mayor o igual a 0 y es obligatorio.'
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+Validation Schema Recepciones de Productos 
+
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'orden_compra_id',
+      'fecha_recepcion',
+      'productos'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'string',
+        description: 'El ID de la recepción debe ser una cadena y es obligatorio.'
+      },
+      orden_compra_id: {
+        bsonType: 'string',
+        description: 'El ID de la orden de compra debe ser una cadena y es obligatorio.'
+      },
+      fecha_recepcion: {
+        bsonType: 'date',
+        description: 'La fecha de recepción debe ser una fecha válida y es obligatoria.'
+      },
+      productos: {
+        bsonType: 'array',
+        items: {
+          bsonType: 'object',
+          required: [
+            'producto_id',
+            'cantidad',
+            'nuevo_costo_promedio'
+          ],
+          properties: {
+            producto_id: {
+              bsonType: 'string',
+              description: 'El ID del producto debe ser una cadena y es obligatorio.'
+            },
+            cantidad: {
+              bsonType: 'int',
+              minimum: 1,
+              description: 'La cantidad debe ser mayor o igual a 1 y es obligatoria.'
+            },
+            nuevo_costo_promedio: {
+              bsonType: [
+                'double',
+                'int'
+              ],
+              minimum: 0,
+              description: 'El nuevo costo promedio debe ser mayor o igual a 0 y es obligatorio.'
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+[{
+  "_id": "sucursal_001",
+  "nombre": "Sucursal Occidente",
+  "direccion": "Av. 19 # 123-45",
+  "ciudad": "Bogotá",
+  "telefono": "3001234567"
+},
+{
+  "_id": "sucursal_002",
+  "nombre": "Sucursal Oriente",
+  "direccion": "Calle 25 # 78-90",
+  "ciudad": "Bogotá",
+  "telefono": "3002345678"
+},
+{
+  "_id": "sucursal_003",
+  "nombre": "Sucursal Norte",
+  "direccion": "Carrera 7 # 32-55",
+  "ciudad": "Bucaramanga",
+  "telefono": "3003456789"
+},
+{
+  "_id": "sucursal_004",
+  "nombre": "Sucursal Sur",
+  "direccion": "Calle 15 # 20-10",
+  "ciudad": "Bucaramanga",
+  "telefono": "3004567890"
+}]

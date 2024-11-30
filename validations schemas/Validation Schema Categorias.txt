@@ -1,0 +1,31 @@
+Validation Schema Categorias 
+
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'nombre',
+      'descripcion',
+      'caracteristicas_de_almacenamiento'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'string',
+        description: 'El ID de la categoría debe ser una cadena y es obligatorio.'
+      },
+      nombre: {
+        bsonType: 'string',
+        description: 'El nombre de la categoría debe ser una cadena y es obligatorio.'
+      },
+      descripcion: {
+        bsonType: 'string',
+        description: 'La descripción de la categoría debe ser una cadena y es obligatoria.'
+      },
+      caracteristicas_de_almacenamiento: {
+        bsonType: 'string',
+        description: 'Las características de almacenamiento deben ser una cadena y son obligatorias.'
+      }
+    }
+  }
+}

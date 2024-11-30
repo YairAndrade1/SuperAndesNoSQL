@@ -1,0 +1,96 @@
+[{
+  "_id": "recepcion_001",
+  "orden_compra_id": "orden_001",
+  "fecha_recepcion": {
+    "$date": "2024-11-05T00:00:00.000Z"
+  },
+  "productos": [
+    {
+      "producto_id": "prod_001",
+      "cantidad": 50,
+      "nuevo_costo_promedio": 1900
+    },
+    {
+      "producto_id": "prod_003",
+      "cantidad": 30,
+      "nuevo_costo_promedio": 11000
+    },
+    {
+      "producto_id": "prod_006",
+      "cantidad": 100,
+      "nuevo_costo_promedio": 3800
+    }
+  ]
+},
+{
+  "_id": "recepcion_002",
+  "orden_compra_id": "orden_002",
+  "fecha_recepcion": {
+    "$date": "2024-11-06T00:00:00.000Z"
+  },
+  "productos": [
+    {
+      "producto_id": "prod_004",
+      "cantidad": 100,
+      "nuevo_costo_promedio": 2400
+    },
+    {
+      "producto_id": "prod_005",
+      "cantidad": 150,
+      "nuevo_costo_promedio": 1450
+    },
+    {
+      "producto_id": "prod_007",
+      "cantidad": 75,
+      "nuevo_costo_promedio": 2950
+    }
+  ]
+},
+{
+  "_id": "recepcion_003",
+  "orden_compra_id": "orden_003",
+  "fecha_recepcion": {
+    "$date": "2024-11-07T00:00:00.000Z"
+  },
+  "productos": [
+    {
+      "producto_id": "prod_008",
+      "cantidad": 200,
+      "nuevo_costo_promedio": 950
+    },
+    {
+      "producto_id": "prod_009",
+      "cantidad": 150,
+      "nuevo_costo_promedio": 2400
+    },
+    {
+      "producto_id": "prod_010",
+      "cantidad": 50,
+      "nuevo_costo_promedio": 11500
+    }
+  ]
+},
+{
+  "_id": "recepcion_004",
+  "orden_compra_id": "orden_004",
+  "fecha_recepcion": {
+    "$date": "2024-11-08T00:00:00.000Z"
+  },
+  "productos": [
+    {
+      "producto_id": "prod_011",
+      "cantidad": 75,
+      "nuevo_costo_promedio": 4900
+    },
+    {
+      "producto_id": "prod_012",
+      "cantidad": 100,
+      "nuevo_costo_promedio": 3400
+    },
+    {
+      "producto_id": "prod_013",
+      "cantidad": 50,
+      "nuevo_costo_promedio": 790000
+    }
+  ]
+}]

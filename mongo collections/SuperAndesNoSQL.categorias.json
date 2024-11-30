@@ -1,0 +1,56 @@
+[{
+  "_id": "categoria_001",
+  "codigo": "PEREC01",
+  "nombre": "Perecederos",
+  "descripcion": "Productos con fecha de vencimiento, como alimentos frescos, lácteos, etc.",
+  "caracteristicas_de_almacenamiento": "Refrigeración entre 2-4°C, Humedad controlada, Duración de 5-15 días dependiendo del producto."
+},
+{
+  "_id": "categoria_002",
+  "codigo": "NO_PEREC01",
+  "nombre": "No Perecederos",
+  "descripcion": "Productos que no tienen fecha de vencimiento o tienen una vida útil muy larga, como conservas, enlatados, etc.",
+  "caracteristicas_de_almacenamiento": "Ambiente normal, Baja humedad, Larga duración, años."
+},
+{
+  "_id": "categoria_003",
+  "codigo": "ASEO01",
+  "nombre": "Aseo",
+  "descripcion": "Productos de higiene y limpieza, como detergentes, jabones, productos de limpieza del hogar.",
+  "caracteristicas_de_almacenamiento": "Ambiente normal, Humedad baja, Larga duración, productos no perecederos."
+},
+{
+  "_id": "categoria_004",
+  "codigo": "CONG01",
+  "nombre": "Congelados",
+  "descripcion": "Productos que deben ser almacenados a temperaturas bajo cero, como carnes, helados, vegetales congelados.",
+  "caracteristicas_de_almacenamiento": "Congelación entre -18°C y -20°C, Humedad controlada, Hasta 12 meses dependiendo del producto."
+},
+{
+  "_id": "categoria_005",
+  "codigo": "VEST01",
+  "nombre": "Prendas de Vestir",
+  "descripcion": "Ropa y accesorios, como camisetas, pantalones, chaquetas, etc.",
+  "caracteristicas_de_almacenamiento": "Ambiente normal, Humedad baja, Durabilidad indefinida si se almacena adecuadamente."
+},
+{
+  "_id": "categoria_006",
+  "codigo": "MUEB01",
+  "nombre": "Muebles",
+  "descripcion": "Muebles para el hogar o la oficina, como sillas, mesas, escritorios.",
+  "caracteristicas_de_almacenamiento": "Ambiente normal, Humedad baja, evitar exposición a la luz directa, Duración indefinida, según el material."
+},
+{
+  "_id": "categoria_007",
+  "codigo": "HERR01",
+  "nombre": "Herramientas",
+  "descripcion": "Herramientas manuales y eléctricas, como martillos, taladros, sierras, etc.",
+  "caracteristicas_de_almacenamiento": "Ambiente normal, Humedad baja, Mantener en lugar seco, Larga duración, depende del cuidado."
+},
+{
+  "_id": "categoria_008",
+  "codigo": "ELECT01",
+  "nombre": "Electrodomésticos",
+  "descripcion": "Electrodomésticos como refrigeradores, lavadoras, microondas, etc.",
+  "caracteristicas_de_almacenamiento": "Ambiente normal, Humedad baja, Varía dependiendo del tipo de producto."
+}]

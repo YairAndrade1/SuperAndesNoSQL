@@ -1,0 +1,53 @@
+Validation Schema Productos
+
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'nombre',
+      'precio_unitario',
+      'presentacion',
+      'categoria_id',
+      'codigo_barras'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'string',
+        description: 'El ID del producto debe ser una cadena y es obligatorio.'
+      },
+      nombre: {
+        bsonType: 'string',
+        description: 'El nombre del producto debe ser una cadena y es obligatorio.'
+      },
+      precio_unitario: {
+        bsonType: [
+          'double',
+          'int'
+        ],
+        minimum: 0,
+        description: 'El precio unitario debe ser un número mayor o igual a 0 y es obligatorio.'
+      },
+      presentacion: {
+        bsonType: 'string',
+        description: 'La presentación del producto debe ser una cadena y es obligatoria.'
+      },
+      categoria_id: {
+        bsonType: 'string',
+        description: 'El ID de la categoría debe ser una cadena y es obligatorio.'
+      },
+      codigo_barras: {
+        bsonType: 'string',
+        pattern: '^[0-9]{13}$',
+        description: 'El código de barras debe ser una cadena de 13 dígitos numéricos.'
+      },
+      fecha_expiracion: {
+        bsonType: [
+          'date',
+          'null'
+        ],
+        description: 'La fecha de expiración debe ser un campo de tipo fecha y es obligatoria.'
+      }
+    }
+  }
+}
